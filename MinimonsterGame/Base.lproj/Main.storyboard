@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -60,105 +59,153 @@
                                     </imageView>
                                 </subviews>
                             </stackView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="idle1" translatesAutoresizingMaskIntoConstraints="NO" id="yRH-22-CXY" customClass="MonsterImg" customModule="MinimonsterGame" customModuleProvider="target">
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="big_idle1" translatesAutoresizingMaskIntoConstraints="NO" id="yRH-22-CXY" customClass="MonsterImg" customModule="MinimonsterGame" customModuleProvider="target">
                                 <rect key="frame" x="69" y="105" width="615" height="487"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="487" id="FDJ-YQ-lxl"/>
                                     <constraint firstAttribute="width" constant="615" id="TvT-fr-aJS"/>
                                 </constraints>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="WK3-1Q-5jC">
-                                <rect key="frame" x="155" y="99" width="290" height="98"/>
+                            <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="WK3-1Q-5jC">
+                                <rect key="frame" x="98" y="91" width="404" height="128"/>
                                 <subviews>
                                     <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart" translatesAutoresizingMaskIntoConstraints="NO" id="GQn-c1-OHr" customClass="DragImg" customModule="MinimonsterGame" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="95" height="98"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="leash" translatesAutoresizingMaskIntoConstraints="NO" id="aid-X4-mNk">
+                                        <rect key="frame" x="138" y="0.0" width="128" height="128"/>
                                     </imageView>
                                     <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="food" translatesAutoresizingMaskIntoConstraints="NO" id="88m-TG-nSx" customClass="DragImg" customModule="MinimonsterGame" customModuleProvider="target">
-                                        <rect key="frame" x="195" y="0.0" width="95" height="98"/>
+                                        <rect key="frame" x="276" y="0.0" width="128" height="128"/>
                                     </imageView>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="96" id="v6u-zt-2hD"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="v6u-zt-2hD"/>
-                                    </mask>
-                                </variation>
                                 <variation key="heightClass=compact" axis="vertical" misplaced="YES" spacing="50">
                                     <rect key="frame" x="485" y="36" width="96" height="246"/>
-                                    <mask key="constraints">
-                                        <include reference="v6u-zt-2hD"/>
-                                    </mask>
                                 </variation>
                             </stackView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jcM-eT-06a" userLabel="ReplayBg">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.59649784482758617" colorSpace="calibratedWhite"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="400" height="800"/>
+                                </variation>
+                            </view>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ylZ-PN-n97">
+                                <rect key="frame" x="185" y="206" width="229" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="229" id="25z-dA-ubC"/>
+                                    <constraint firstAttribute="height" constant="80" id="TMh-l6-6nE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Courier-Bold" family="Courier" pointSize="36"/>
+                                <state key="normal" title="Replay" backgroundImage="replay">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="79" y="356" width="241" height="89"/>
+                                </variation>
+                                <connections>
+                                    <action selector="onTappedReplayBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1mn-QP-yJx"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Rh-n0-qiJ" userLabel="bigBtn">
+                                <rect key="frame" x="146" y="284" width="309" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="309" id="JzX-s1-9Zk"/>
+                                    <constraint firstAttribute="height" constant="80" id="vgf-M7-oBK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Courier-Bold" family="Courier" pointSize="36"/>
+                                <state key="normal" title="Big Monster" backgroundImage="replay">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="79" y="356" width="241" height="89"/>
+                                </variation>
+                                <connections>
+                                    <action selector="onTappedBigMonsterBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gew-WY-ROi"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jFX-pU-WPa" userLabel="smallBtn">
+                                <rect key="frame" x="119" y="362" width="363" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="363" id="Ndw-bV-jur"/>
+                                    <constraint firstAttribute="height" constant="80" id="YUC-0W-kj9"/>
+                                    <constraint firstAttribute="width" constant="229" id="nHq-4k-WQg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Courier-Bold" family="Courier" pointSize="36"/>
+                                <state key="normal" title="Small Monster" backgroundImage="replay">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="nHq-4k-WQg"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="79" y="356" width="241" height="89"/>
+                                </variation>
+                                <connections>
+                                    <action selector="onTappedSmallMonsterBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="noW-DL-VUE"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="yRH-22-CXY" secondAttribute="bottom" constant="8" id="0Tn-CN-7Bw"/>
                             <constraint firstItem="psW-rT-uhS" firstAttribute="centerX" secondItem="zfH-aK-gIP" secondAttribute="centerX" id="2GC-mZ-CcR"/>
-                            <constraint firstItem="WK3-1Q-5jC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5Oq-q9-S4g"/>
+                            <constraint firstItem="0Rh-n0-qiJ" firstAttribute="top" secondItem="WK3-1Q-5jC" secondAttribute="bottom" constant="65" id="4R3-8a-UnI"/>
                             <constraint firstAttribute="trailing" secondItem="Tne-M1-X4s" secondAttribute="trailing" id="Axk-xy-mgm"/>
-                            <constraint firstItem="WK3-1Q-5jC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Dbr-YH-n1a"/>
+                            <constraint firstItem="ylZ-PN-n97" firstAttribute="top" secondItem="zfH-aK-gIP" secondAttribute="bottom" constant="115" id="Eja-UH-P5C"/>
                             <constraint firstItem="Tne-M1-X4s" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Jap-Gg-KbI"/>
+                            <constraint firstItem="jcM-eT-06a" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="JmM-Bq-gCJ"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="jcM-eT-06a" secondAttribute="bottom" id="N0g-Mm-wpR"/>
+                            <constraint firstItem="jcM-eT-06a" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="NbY-v2-dMA"/>
+                            <constraint firstAttribute="trailing" secondItem="jcM-eT-06a" secondAttribute="trailing" id="Q12-A8-kjq"/>
                             <constraint firstItem="psW-rT-uhS" firstAttribute="centerY" secondItem="zfH-aK-gIP" secondAttribute="centerY" id="Tj3-af-gZ6"/>
-                            <constraint firstItem="WK3-1Q-5jC" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="WM0-rV-NLz"/>
-                            <constraint firstItem="WK3-1Q-5jC" firstAttribute="top" secondItem="zfH-aK-gIP" secondAttribute="bottom" constant="8" id="X92-Ih-LlS"/>
+                            <constraint firstItem="ylZ-PN-n97" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Y4E-hS-upb"/>
                             <constraint firstItem="Tne-M1-X4s" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="aOX-yN-IQU"/>
                             <constraint firstItem="zfH-aK-gIP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="aQs-Hc-fPX"/>
+                            <constraint firstItem="jcM-eT-06a" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="bQv-bH-wjq"/>
+                            <constraint firstItem="jcM-eT-06a" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ed4-VM-q8R"/>
+                            <constraint firstItem="jFX-pU-WPa" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="goM-hT-A8c"/>
                             <constraint firstItem="zfH-aK-gIP" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="hPR-Vt-abF"/>
                             <constraint firstAttribute="trailing" secondItem="o4H-jj-19s" secondAttribute="trailing" id="hdt-NP-fOl"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="o4H-jj-19s" secondAttribute="bottom" id="iTv-zA-6hl"/>
-                            <constraint firstItem="WK3-1Q-5jC" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="16" id="mj8-yO-SeZ"/>
-                            <constraint firstItem="WK3-1Q-5jC" firstAttribute="top" secondItem="zfH-aK-gIP" secondAttribute="bottom" constant="8" id="u4T-fa-PMQ"/>
-                            <constraint firstItem="WK3-1Q-5jC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vYG-Ek-Zmu"/>
+                            <constraint firstItem="jFX-pU-WPa" firstAttribute="top" secondItem="ylZ-PN-n97" secondAttribute="bottom" constant="76" id="oUP-6h-ePj"/>
+                            <constraint firstItem="WK3-1Q-5jC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="sxp-Uf-hR0"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Tne-M1-X4s" secondAttribute="bottom" id="vhM-QY-eho"/>
+                            <constraint firstItem="0Rh-n0-qiJ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="voY-Zp-TcF"/>
                             <constraint firstItem="yRH-22-CXY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="76" id="x9o-sg-QVi"/>
                             <constraint firstItem="o4H-jj-19s" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ytG-SK-ukl"/>
+                            <constraint firstItem="WK3-1Q-5jC" firstAttribute="top" secondItem="zfH-aK-gIP" secondAttribute="bottom" id="yu5-IZ-exQ"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="5Oq-q9-S4g"/>
-                                <exclude reference="WM0-rV-NLz"/>
-                                <exclude reference="mj8-yO-SeZ"/>
-                                <exclude reference="u4T-fa-PMQ"/>
-                                <exclude reference="vYG-Ek-Zmu"/>
-                            </mask>
-                        </variation>
-                        <variation key="heightClass=compact">
-                            <mask key="constraints">
-                                <exclude reference="Dbr-YH-n1a"/>
-                                <include reference="WM0-rV-NLz"/>
-                                <include reference="mj8-yO-SeZ"/>
-                            </mask>
-                        </variation>
-                        <variation key="heightClass=regular-widthClass=compact">
-                            <mask key="constraints">
-                                <include reference="vYG-Ek-Zmu"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
+                        <outlet property="bigMonsterBtn" destination="0Rh-n0-qiJ" id="X7o-fa-NVm"/>
                         <outlet property="foodImg" destination="88m-TG-nSx" id="poZ-Pb-hVE"/>
                         <outlet property="heartImg" destination="GQn-c1-OHr" id="FzB-bj-Xid"/>
                         <outlet property="monsterImg" destination="yRH-22-CXY" id="6Ka-BA-PQm"/>
                         <outlet property="penalty1Img" destination="oxc-lA-YAC" id="6dz-0O-rKv"/>
                         <outlet property="penalty2Img" destination="DLM-Nm-0ob" id="Djf-rA-7TX"/>
                         <outlet property="penalty3Img" destination="6MV-Vf-prq" id="Mjb-YZ-nY9"/>
+                        <outlet property="replayBg" destination="jcM-eT-06a" id="hAJ-oC-JPB"/>
+                        <outlet property="replayBtn" destination="ylZ-PN-n97" id="4aF-0I-VDL"/>
+                        <outlet property="smallMonsterBtn" destination="jFX-pU-WPa" id="h3z-hH-be3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="565" y="539"/>
+            <point key="canvasLocation" x="562" y="526"/>
         </scene>
     </scenes>
     <resources>
         <image name="bg" width="768" height="1024"/>
+        <image name="big_idle1" width="889" height="615"/>
         <image name="food" width="95" height="98"/>
         <image name="ground" width="1444" height="151"/>
         <image name="heart" width="95" height="98"/>
-        <image name="idle1" width="889" height="615"/>
+        <image name="leash" width="128" height="128"/>
         <image name="livespanel" width="468" height="137"/>
+        <image name="replay" width="212" height="78"/>
         <image name="skull" width="95" height="98"/>
     </resources>
 </document>

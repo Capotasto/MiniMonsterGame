@@ -17,6 +17,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var penalty1Img: UIImageView!
     @IBOutlet weak var penalty2Img: UIImageView!
     @IBOutlet weak var penalty3Img: UIImageView!
+    @IBOutlet weak var replayBg: UIView!
+    @IBOutlet weak var replayBtn: UIButton!
+    @IBOutlet weak var bigMonsterBtn: UIButton!
+    @IBOutlet weak var smallMonsterBtn: UIButton!
     
     let DIM_ALPAH: CGFloat = 0.2
     let OPAQUE: CGFloat = 1.0
@@ -33,15 +37,54 @@ class ViewController: UIViewController {
     var sfxDeath: AVAudioPlayer!
     var sfxSkull: AVAudioPlayer!
     
+    var chosenMonster = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        replayBg.hidden = false
+        bigMonsterBtn.hidden = false
+        smallMonsterBtn.hidden = false
+    }
+    
+    @IBAction func onTappedReplayBtn(sender: AnyObject) {
+        initTask();
+        monsterImg.image = UIImage(named: "\(chosenMonster)idle1.png")
+        penalties = 0
+        replayBtn.hidden = true
+        replayBg.hidden = true
+    
+    }
+    
+    @IBAction func onTappedBigMonsterBtn(sender: AnyObject) {
+        chosenMonster = "big_"
+        monsterImg.hidden = false
+        replayBg.hidden = true
+        bigMonsterBtn.hidden = true
+        smallMonsterBtn.hidden = true
+
+        initTask()
+    }
+    
+    @IBAction func onTappedSmallMonsterBtn(sender: AnyObject) {
+        chosenMonster = "small_"
+        monsterImg.hidden = false
+        replayBg.hidden = true
+        bigMonsterBtn.hidden = true
+        smallMonsterBtn.hidden = true
+        initTask()
+    }
+    
+    func initTask(){
+        monsterImg.playIdleAnimation(chosenMonster)
         foodImg.dropTarget = monsterImg
         heartImg.dropTarget = monsterImg
         
         penalty1Img.alpha = DIM_ALPAH
         penalty2Img.alpha = DIM_ALPAH
         penalty3Img.alpha = DIM_ALPAH
+        heartImg.alpha = OPAQUE
+        foodImg.alpha = OPAQUE
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "itemDroppedOnCharacter:", name: "onTargetDropped", object: nil)
         
         do{
@@ -60,14 +103,13 @@ class ViewController: UIViewController {
             sfxHeart.prepareToPlay()
             sfxDeath.prepareToPlay()
             sfxSkull.prepareToPlay()
-
+            
             
         } catch let err as NSError{
             print(err.debugDescription)
         }
         
         startTimer()
-        
     }
     
     func itemDroppedOnCharacter(notif: AnyObject){
@@ -118,6 +160,7 @@ class ViewController: UIViewController {
             
             if penalties >= MAX_PENALTIES {
                 gameOver()
+                showReplayBtn()
             }
 
         }
@@ -145,9 +188,16 @@ class ViewController: UIViewController {
     func gameOver(){
         timer.invalidate()
         sfxDeath.play()
-        monsterImg.playDeathAnimation()
+        monsterImg.playDeathAnimation(chosenMonster)
     }
-
-
+    
+    func showReplayBtn(){
+        replayBg.hidden = false
+        replayBg.userInteractionEnabled = true
+        replayBtn.hidden = false
+        replayBtn.userInteractionEnabled = true
+    }
+    
+    
 }
 
