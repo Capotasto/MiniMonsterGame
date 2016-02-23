@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var monsterImg: MonsterImg!
     @IBOutlet weak var foodImg: DragImg!
     @IBOutlet weak var heartImg: DragImg!
+    @IBOutlet weak var leashImg: DragImg!
     @IBOutlet weak var penalty1Img: UIImageView!
     @IBOutlet weak var penalty2Img: UIImageView!
     @IBOutlet weak var penalty3Img: UIImageView!
@@ -21,6 +22,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var replayBtn: UIButton!
     @IBOutlet weak var bigMonsterBtn: UIButton!
     @IBOutlet weak var smallMonsterBtn: UIButton!
+    @IBOutlet weak var backGroundImg: UIImageView!
     
     let DIM_ALPAH: CGFloat = 0.2
     let OPAQUE: CGFloat = 1.0
@@ -62,6 +64,7 @@ class ViewController: UIViewController {
         replayBg.hidden = true
         bigMonsterBtn.hidden = true
         smallMonsterBtn.hidden = true
+        backGroundImg.image = UIImage(named:"bg.png")
 
         initTask()
     }
@@ -72,6 +75,8 @@ class ViewController: UIViewController {
         replayBg.hidden = true
         bigMonsterBtn.hidden = true
         smallMonsterBtn.hidden = true
+        backGroundImg.image = UIImage(named:"gray_tile2.png")
+
         initTask()
     }
     
@@ -79,12 +84,14 @@ class ViewController: UIViewController {
         monsterImg.playIdleAnimation(chosenMonster)
         foodImg.dropTarget = monsterImg
         heartImg.dropTarget = monsterImg
+        leashImg.dropTarget = monsterImg
         
         penalty1Img.alpha = DIM_ALPAH
         penalty2Img.alpha = DIM_ALPAH
         penalty3Img.alpha = DIM_ALPAH
         heartImg.alpha = OPAQUE
         foodImg.alpha = OPAQUE
+        leashImg.alpha = OPAQUE
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "itemDroppedOnCharacter:", name: "onTargetDropped", object: nil)
         
         do{
@@ -120,11 +127,15 @@ class ViewController: UIViewController {
         foodImg.userInteractionEnabled = false
         heartImg.alpha = DIM_ALPAH
         heartImg.userInteractionEnabled = false
+        leashImg.alpha = DIM_ALPAH
+        leashImg.userInteractionEnabled = false
         
         if currentItem == 0{
             sfxHeart.play()
-        }else{
+        }else if currentItem == 1{
             sfxBite.play()
+        }else {
+            sfxHeart.play()
         }
     }
     
@@ -165,7 +176,7 @@ class ViewController: UIViewController {
 
         }
         
-        let rand = arc4random_uniform(2)//0 or 1
+        let rand = arc4random_uniform(3)//0 or 1 or 2
         
         if rand == 0{
             foodImg.alpha = DIM_ALPAH
@@ -173,12 +184,29 @@ class ViewController: UIViewController {
             
             heartImg.alpha = OPAQUE
             heartImg.userInteractionEnabled = true
-        } else {
+            
+            leashImg.alpha = DIM_ALPAH
+            leashImg.userInteractionEnabled = false
+            
+        } else if rand == 1{
+            foodImg.alpha = OPAQUE
+            foodImg.userInteractionEnabled = true
+            
+            heartImg.alpha = DIM_ALPAH
+            heartImg.userInteractionEnabled = false
+
+            leashImg.alpha = DIM_ALPAH
+            leashImg.userInteractionEnabled = false
+        }else{
+            foodImg.alpha = DIM_ALPAH
+            foodImg.userInteractionEnabled = false
+            
             heartImg.alpha = DIM_ALPAH
             heartImg.userInteractionEnabled = false
             
-            foodImg.alpha = OPAQUE
-            foodImg.userInteractionEnabled = true
+            leashImg.alpha = OPAQUE
+            leashImg.userInteractionEnabled = true
+
         }
         currentItem = rand
         monsterHappy = false
